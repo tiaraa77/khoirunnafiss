@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Simpan Pinjam</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Tambahkan file CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f0fc;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #6a0dad;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #570ae4; /* Warna senada */
+        }
+        header .nav-menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        a.active,a:hover {
+            background-color: #f4f4f4;
+            font-weight: 100;
+            background-color: #73a1dc;
+            transition: .5s;
+            box-shadow: 1px 1px 1px 1px rgba(115, 193, 216, 0.5);
+        }
+        .navbar {
+            background-color: #b19cd9;
+            padding: 10px;
+        }
+        .navbar .nav-link {
+            color: white !important;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover {
+            color: #ff7f50 !important;
+        }
+        footer {
+            background-color: #6a0dad;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        h2 {
+            color: #6a0dad;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        main {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-image: url(fot.png);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .form-section h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .form-section form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-section input,
+        .form-section select,
+        .form-section button {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        .form-section button {
+            background-color: #6a0dad;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-section button:hover {
+            background-color: #3f97ce;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .link a {
+            color: #010605;
+            font-size: 16px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            display: none; /* Sembunyikan pesan error secara default */
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .form-section form {
+                gap: 15px;
+            }
+
+            .table-section table {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .logo img {
+                width: 120px;
+            }
+
+            .form-section h2 {
+                font-size: 20px;
+            }
+
+            .form-section input,
+            .form-section select,
+            .form-section button {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .table-section th,
+            .table-section td {
+                padding: 10px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="py-3">
+        <div class="container nav-menu">
+            <div style="display: flex; align-items: center;">
+                <img src="logo.png" alt="Logo Aplikasi">
+                <h2>Aplikasi Simpan Pinjam</h2>
+            </div>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link" href="branda.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="transaksi.html">Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="daftar transaksi.html">Daftar Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil.html">Profil</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Isi Form Transaksi</h2>
+            <form id="transactionForm">
+                <input type="text" id="namaTransaksi" placeholder="Nama Transaksi">
+                <div class="error-message" id="namaTransaksiError">Nama transaksi wajib diisi.</div>
+
+                <input type="number" id="jumlahTransaksi" placeholder="Jumlah">
+                <div class="error-message" id="jumlahTransaksiError">Jumlah wajib diisi.</div>
+
+                <select id="kategoriTransaksi">
+                    <option value="">Pilih Kategori</option>
+                    <option value="Simpan">Simpan</option>
+                    <option value="Pinjam">Pinjam</option>
+                </select>
+                <div class="error-message" id="kategoriTransaksiError">Kategori wajib dipilih.</div>
+
+                <button type="button" id="submitButton">Simpan Transaksi</button>
+            </form>
+        </section>
+        <section class="link">
+            <p><a href="5.html">Lihat Daftar Transaksi</a></p>
+        </section>
+    </main>
+    <script src="jv.js"></script>
+</body>
+</html>
